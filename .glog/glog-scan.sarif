@@ -1,0 +1,69 @@
+{
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "Glog.AI",
+          "organization": "Glog.AI",
+          "fullName": "Glog, Making software more secure",
+          "version": "1.0.0",
+          "semanticVersion": "1.0.0",
+          "informationUri": "https://www.glog.ai",
+          "rules": [
+            {
+              "id": "glog-c41e858c-d485-4406-8015-6495a3232b5f",
+              "shortDescription": {
+                "text": "Lambda functions should have X-Ray tracing enabled"
+              },
+              "helpUri": "https://aquasecurity.github.io/tfsec/v1.28.6/checks/aws/lambda/enable-tracing/",
+              "help": {
+                "text": "",
+                "markdown": "For more details, visit: [https://aquasecurity.github.io/tfsec/v1.28.6/checks/aws/lambda/enable-tracing/](https://aquasecurity.github.io/tfsec/v1.28.6/checks/aws/lambda/enable-tracing/)."
+              },
+              "properties": {
+                "tags": [
+                  "aws-lambda-enable-tracing"
+                ]
+              }
+            }
+          ],
+          "language": "en-US",
+          "contents": [
+            "localizedData",
+            "nonLocalizedData"
+          ],
+          "isComprehensive": false
+        }
+      },
+      "language": "en-US",
+      "results": [
+        {
+          "ruleId": "glog-c41e858c-d485-4406-8015-6495a3232b5f",
+          "kind": "fail",
+          "level": "note",
+          "message": {
+            "text": "Function does not have tracing enabled."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "main.tf"
+                },
+                "region": {
+                  "startLine": 24,
+                  "endLine": 170
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "newlineSequences": [
+        "\r\n",
+        "\n"
+      ]
+    }
+  ]
+}
