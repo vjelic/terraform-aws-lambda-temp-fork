@@ -12,7 +12,7 @@
           "informationUri": "https://www.glog.ai",
           "rules": [
             {
-              "id": "glog-42a24461-32d6-4d2b-bbf9-f5041e368a3d",
+              "id": "glog-1174c469-caba-4f60-9899-a7c28a00325e",
               "help": {
                 "text": "",
                 "markdown": "### Description\n\nThe vulnerability \"Function does not have tracing enabled\" in Terraform refers to the lack of monitoring and logging capabilities for specific functions or resources within your infrastructure as code. Tracing is crucial for understanding the flow of execution, identifying performance bottlenecks, and diagnosing issues. Without tracing, it becomes challenging to track the behavior of your infrastructure, which can lead to undetected security vulnerabilities, performance issues, and operational challenges.\n\n### General Mitigation Advice\n\n1. **Enable Tracing**: Ensure that tracing is enabled for all critical functions and resources. This can often be done by configuring your cloud provider's monitoring and logging services.\n   \n2. **Use Managed Services**: Leverage managed services that offer built-in tracing and monitoring capabilities. For example, AWS X-Ray, Google Cloud Trace, or Azure Monitor.\n\n3. **Implement Logging**: Complement tracing with comprehensive logging to capture detailed information about the execution of your infrastructure.\n\n4. **Regular Audits**: Conduct regular audits of your Terraform configurations to ensure that tracing is enabled and properly configured.\n\n5. **Security Best Practices**: Follow security best practices for your cloud provider to ensure that tracing data is protected and access is controlled.\n\n### Source Code Fix Recommendation\n\nTo enable tracing in Terraform, you typically need to configure the specific resource or service to use the cloud provider's tracing capabilities. Below is an example of how you might enable tracing for an AWS Lambda function using Terraform:\n\n```hcl\nresource \"aws_lambda_function\" \"example\" {\n  function_name = \"example_lambda\"\n  role          = aws_iam_role.lambda_exec.arn\n  handler       = \"index.handler\"\n  runtime       = \"nodejs14.x\"\n  filename      = \"lambda_function_payload.zip\"\n\n  tracing_config {\n    mode = \"Active\"\n  }\n}\n\nresource \"aws_iam_role\" \"lambda_exec\" {\n  name = \"lambda_exec_role\"\n\n  assume_role_policy = jsonencode({\n    Version = \"2012-10-17\"\n    Statement = [\n      {\n        Action = \"sts:AssumeRole\"\n        Effect = \"Allow\"\n        Principal = {\n          Service = \"lambda.amazonaws.com\"\n        }\n      },\n    ]\n  })\n}\n```\n\nIn this example, the `tracing_config` block is used to enable AWS X-Ray tracing for the Lambda function.\n\n### Relevant Resources\n\n- [OWASP Logging Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html)\n\n### Common Weakness Enumeration (CWE)\n\n- [CWE-778: Insufficient Logging](https://cwe.mitre.org/data/definitions/778.html)\n\nThese resources provide additional guidance on best practices for logging and monitoring, which are essential components of a robust security posture."
@@ -35,7 +35,7 @@
       "language": "en-US",
       "results": [
         {
-          "ruleId": "glog-42a24461-32d6-4d2b-bbf9-f5041e368a3d",
+          "ruleId": "glog-1174c469-caba-4f60-9899-a7c28a00325e",
           "kind": "fail",
           "level": "note",
           "message": {
